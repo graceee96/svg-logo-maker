@@ -1,5 +1,5 @@
 //TODO: Import required classes to run tests
-const {Circle, Square, Triangle} = require('./shape.js');
+const {Circle, Square, Triangle} = require('../lib/shape.js');
 // const Triangle = require('./triangle.js');
 // const Square = require('./square.js');
 
