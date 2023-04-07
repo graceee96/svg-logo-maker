@@ -1,5 +1,6 @@
 //imported files + dependencies
 const inquirer = require('inquirer');
+const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 const fs = require('fs');
 const { Circle, Square, Triangle } = require('./lib/shape');
 const SVG = require('./lib/svg');
@@ -10,12 +11,15 @@ const createLogo = (logo) => {
 }
 
 //inquirer function
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
+
 inquirer
     .prompt([
         {
-            type: 'input',
-            message: 'Enter text for the logo (must not be more than 3 characters)',
+            type: 'maxlength-input',
+            message: 'Enter text for the logo',
             name: 'text',
+            maxLength: 3,
         },
         {
             type: 'input',
@@ -35,9 +39,6 @@ inquirer
         }
     ])
     .then((input) => {
-        console.log(input);
-        // console.log('🎉 Generated logo.svg 🎉')
-
         const svg = new SVG();
         svg.setText(input.text, input.text_color);
 
