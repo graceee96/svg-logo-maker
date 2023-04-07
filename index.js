@@ -47,10 +47,10 @@ inquirer
                 //create the shape
                 const circle = new Circle();
                 circle.setColor(input.shape_color);
-                // const renderCircle = circle.render();
+                circle.render();
 
                 //create the svg
-                svg.setShape('circle');
+                svg.setShape(circle);
                 const circleLogo = svg.render();
 
                 //write the file
@@ -62,10 +62,10 @@ inquirer
                 //create the shape
                 const square = new Square();
                 square.setColor(input.shape_color);
-                // const renderSquare = square.render();
+                square.render();
 
                 //create the svg
-                svg.setShape('square');
+                svg.setShape(square);
                 const squareLogo = svg.render();
 
                 //wrtie the file
@@ -77,10 +77,10 @@ inquirer
                 //create the shape
                 const triangle = new Triangle();
                 triangle.setColor(input.shape_color);
-                // const renderTriangle = triangle.render();
+                triangle.render();
 
                 //create the svg
-                svg.setShape('tirangle');
+                svg.setShape(triangle);
                 const triangleLogo = svg.render();
 
                 //write the file
