@@ -4,6 +4,11 @@ const fs = require('fs');
 const { Circle, Square, Triangle } = require('./lib/shape');
 const SVG = require('./lib/svg');
 
+//create file function
+const createLogo = (logo) => {
+    fs.writeFile('logo.svg', logo, (err) => err ? console.log(err) : console.log('🎉 Generated logo.svg 🎉'))
+}
+
 //inquirer function
 inquirer
     .prompt([
@@ -15,7 +20,7 @@ inquirer
         {
             type: 'input',
             message: 'Enter text color',
-            name: 'text-color',
+            name: 'text_color',
         },
         {
             type: 'rawlist',
@@ -26,16 +31,61 @@ inquirer
         {
             type: 'input',
             message: 'Enter shape color',
-            name: 'shape-color',
+            name: 'shape_color',
         }
     ])
     .then((input) => {
         console.log(input);
-        // console.log('Generated logo.svg')
+        // console.log('🎉 Generated logo.svg 🎉')
 
-        //if chosen shape is a circle
-        //if chosen shape is a square
-        //if chosen shape is a triangle
+        const svg = new SVG();
+        svg.setText(input.text, input.text_color);
 
-        //write to file function
+        switch (input.shape) {
+            //if chosen shape is a circle
+            case 'Circle':
+                //create the shape
+                const circle = new Circle();
+                circle.setColor(input.shape_color);
+                // const renderCircle = circle.render();
+
+                //create the svg
+                svg.setShape('circle');
+                const circleLogo = svg.render();
+
+                //write the file
+                createLogo(circleLogo);
+
+                break;
+            //if chosen shape is a square
+            case 'Square':
+                //create the shape
+                const square = new Square();
+                square.setColor(input.shape_color);
+                // const renderSquare = square.render();
+
+                //create the svg
+                svg.setShape('square');
+                const squareLogo = svg.render();
+
+                //wrtie the file
+                createLogo(squareLogo);
+
+                break;
+            //if chosen shape is a triangle
+            case 'Triangle':
+                //create the shape
+                const triangle = new Triangle();
+                triangle.setColor(input.shape_color);
+                // const renderTriangle = triangle.render();
+
+                //create the svg
+                svg.setShape('tirangle');
+                const triangleLogo = svg.render();
+
+                //write the file
+                createLogo(triangleLogo);
+
+                break;
+        }
     })
