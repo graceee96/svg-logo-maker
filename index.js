@@ -1,3 +1,10 @@
+//imported files + dependencies
+const inquirer = require('inquirer');
+const fs = require('fs');
+const { Circle, Square, Triangle } = require('./lib/shape');
+const SVG = require('./lib/svg');
+
+//inquirer function
 inquirer
     .prompt([
         {
@@ -14,7 +21,7 @@ inquirer
             type: 'rawlist',
             message: 'Pick a shape for the logo',
             name: 'shape',
-            choices: ['circle', 'square', 'triangle']
+            choices: ['Circle', 'Square', 'Triangle']
         },
         {
             type: 'input',
@@ -22,7 +29,13 @@ inquirer
             name: 'shape-color',
         }
     ])
-    .then((answers) => {
-        console.log(answers);
-        console.log('Generated logo.svg')
+    .then((input) => {
+        console.log(input);
+        // console.log('Generated logo.svg')
+
+        //if chosen shape is a circle
+        //if chosen shape is a square
+        //if chosen shape is a triangle
+
+        //write to file function
     })
